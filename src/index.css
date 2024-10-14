@@ -9,4 +9,32 @@
         font-weight: 400 700;
         font-display: swap;
     }
+
+    * {
+        @apply font-red-hat;
+    }
+
+    body {
+        @apply bg-rose-50;
+    }
+}
+
+.preset-1 {
+    @apply text-heading-xl font-bold;
+}
+
+.preset-2 {
+    @apply text-heading-lg font-bold;
+}
+
+.preset-3 {
+    @apply text-body-base font-semibold;
+}
+
+.preset-4 {
+    @apply text-body-sm font-normal;
+}
+
+.preset-4-bold {
+    @apply text-body-sm font-semibold;
 }

@@ -23,18 +23,13 @@ export default {
         'red-hat': ['Red Hat Text', 'sans-serif'],
       },
       fontSize: {
-        'preset-1': ['3.5rem', { lineHeight: '120%' }],
-        'preset-2': ['1.5rem', { lineHeight: '125%' }],
-        'preset-3': ['1rem', { lineHeight: '150%' }],
-        'preset-4': ['0.875rem', { lineHeight: '150%' }],
-      },
-      fontWeight: {
-        'bold': 700,
-        'semibold': 600,
-        'regular': 400,
+        'heading-xl': ['2.5rem', { lineHeight: '120%' }],
+        'heading-lg': ['1.5rem'],
+        'body-base': ['1rem'],
+        'body-sm': ['0.875rem'],
       },
       screens: {
-        'tablet': '7680px',
+        'tablet': '768px',
         'desktop': '1440px',
       },
       plugins: [],
