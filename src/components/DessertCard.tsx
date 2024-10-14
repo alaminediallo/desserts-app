@@ -1,17 +1,6 @@
-type Props = {
-  id: number;
-  image: {
-    thumbnail: string;
-    desktop: string;
-    tablet: string;
-    mobile: string;
-  }
-  name: string;
-  category: string;
-  price: number;
-}
+import { dessertType } from "../type/dessertType.ts";
 
-export function DessertCard({ name, image, category, price }: Props) {
+export function DessertCard({ name, image, category, price }: dessertType) {
   return (
     <div className="max-w-[327px] space-y-[38px] tablet:w-[213.33px] desktop:w-[250.67px]">
       <div className="flex flex-col items-center">
