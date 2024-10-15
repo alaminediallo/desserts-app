@@ -1,4 +1,9 @@
+import { useState } from "react";
+import { Modal } from "./Modal.tsx";
+import { createPortal } from "react-dom";
+
 export function OrderSummary() {
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <div className="flex flex-col gap-6">
@@ -12,9 +17,18 @@ export function OrderSummary() {
         <p className="preset-4">This is a <span className="font-semibold">carbon-neutral</span> delivery</p>
       </div>
 
-      <button className="primary-btn">
+      <button
+        className="primary-btn"
+        onClick={() => setShowModal(true)}
+      >
         Confirm Order
       </button>
+      {showModal &&
+        createPortal(
+          <Modal closeModal={() => setShowModal(false)} />,
+          document.body
+        )
+      }
     </div>
   )
 }
