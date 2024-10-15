@@ -38,3 +38,7 @@
 .preset-4-bold {
     @apply text-body-sm font-semibold;
 }
+
+.primary-btn {
+    @apply preset-3 w-full rounded-full bg-red py-4 text-center text-white transition-colors hover:bg-[#952c0b] outline-0 focus-visible:ring-2 focus-visible:ring-red focus-visible:bg-[#952c0b] focus-visible:ring-offset-2;
+}
