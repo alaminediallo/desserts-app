@@ -24,9 +24,9 @@ export default {
       },
       fontSize: {
         'heading-xl': ['2.5rem', { lineHeight: '120%' }],
-        'heading-lg': ['1.5rem'],
-        'body-base': ['1rem'],
-        'body-sm': ['0.875rem'],
+        'heading-lg': ['1.5rem', { lineHeight: '125%' }],
+        'body-base': ['1rem', { lineHeight: '150%' }],
+        'body-sm': ['0.875rem', { lineHeight: '150%' }],
       },
       screens: {
         'tablet': '768px',
