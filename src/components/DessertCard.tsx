@@ -12,7 +12,7 @@ export function DessertCard({ name, image, category, price }: dessertType) {
         </picture>
 
         <button
-          className="group -m-[22px] flex w-40 items-center justify-center gap-2 rounded-full border border-rose-400 bg-white p-3 outline-none transition-colors hover:border-red focus-visible:outline focus-visible:outline-offset-1 focus-visible:outline-red">
+          className="group -m-[22px] flex w-40 items-center justify-center gap-2 rounded-full border border-rose-400 bg-white p-3 outline-none transition-colors hover:border-red focus-visible:ring-1 focus-visible:ring-red">
           <img src="/assets/images/icon-add-to-cart.svg" alt="" className="size-5" />
           <span className="preset-4-bold inline-block text-rose-900 group-hover:text-red group-focus-visible:text-red">Add to Cart</span>
         </button>
