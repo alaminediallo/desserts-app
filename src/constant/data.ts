@@ -11,7 +11,8 @@ export const dessertsData: dessertType[] = [
     },
     "name": "Waffle with Berries",
     "category": "Waffle",
-    "price": 6.50
+    "price": 6.50,
+    "quantity": 0
   },
   {
     "id": 2,
@@ -23,7 +24,8 @@ export const dessertsData: dessertType[] = [
     },
     "name": "Vanilla Bean Crème Brûlée",
     "category": "Crème Brûlée",
-    "price": 7.00
+    "price": 7.00,
+    "quantity": 0
   },
   {
     "id": 3,
@@ -35,7 +37,8 @@ export const dessertsData: dessertType[] = [
     },
     "name": "Macaron Mix of Five",
     "category": "Macaron",
-    "price": 8.00
+    "price": 8.00,
+    "quantity": 0
   },
   {
     "id": 4,
@@ -47,7 +50,8 @@ export const dessertsData: dessertType[] = [
     },
     "name": "Classic Tiramisu",
     "category": "Tiramisu",
-    "price": 5.50
+    "price": 5.50,
+    "quantity": 0
   },
   {
     "id": 5,
@@ -59,7 +63,8 @@ export const dessertsData: dessertType[] = [
     },
     "name": "Pistachio Baklava",
     "category": "Baklava",
-    "price": 4.00
+    "price": 4.00,
+    "quantity": 0
   },
   {
     "id": 6,
@@ -71,7 +76,8 @@ export const dessertsData: dessertType[] = [
     },
     "name": "Lemon Meringue Pie",
     "category": "Pie",
-    "price": 5.00
+    "price": 5.00,
+    "quantity": 0
   },
   {
     "id": 7,
@@ -83,7 +89,8 @@ export const dessertsData: dessertType[] = [
     },
     "name": "Red Velvet Cake",
     "category": "Cake",
-    "price": 4.50
+    "price": 4.50,
+    "quantity": 0
   },
   {
     "id": 8,
@@ -95,7 +102,8 @@ export const dessertsData: dessertType[] = [
     },
     "name": "Salted Caramel Brownie",
     "category": "Brownie",
-    "price": 4.50
+    "price": 4.50,
+    "quantity": 0
   },
   {
     "id": 9,
@@ -107,6 +115,7 @@ export const dessertsData: dessertType[] = [
     },
     "name": "Vanilla Panna Cotta",
     "category": "Panna Cotta",
-    "price": 6.50
+    "price": 6.50,
+    "quantity": 0
   }
 ]
