@@ -9,14 +9,14 @@ type Props = {
   onReset: () => void;
 }
 
-
 export function CartSummary({ desserts, onRemove, onReset }: Props) {
 
-  const dessertCart = desserts.filter(dessert => dessert.quantity > 0)
+  const dessertCart = desserts.filter(dessert => dessert.quantity > 0);
+  const dessertCartQuantity = dessertCart.reduce((acc, currentValue) => acc + currentValue.quantity, 0);
 
   return (
     <>
-      <h2 className="preset-2 mb-6 text-red">Your Cart (0)</h2>
+      <h2 className="preset-2 mb-6 text-red">Your Cart ({dessertCartQuantity})</h2>
       {dessertCart.length === 0 ? (
         <div className="mt-10 flex flex-col items-center justify-center gap-4">
           <img src="/assets/images/illustration-empty-cart.svg" alt="" className="size-32" />

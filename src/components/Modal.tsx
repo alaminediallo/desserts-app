@@ -7,21 +7,28 @@ import { dessertType } from "../type/dessertType.ts";
 type Props = {
   closeModal: () => void;
   dessertCart: dessertType[];
-  totalOrder: number
-}
+  totalOrder: number;
+};
 
 export function Modal({ closeModal, totalOrder, dessertCart }: Props) {
   const [isVisible, setIsVisible] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
 
-  const isTablet = useMediaQuery('(min-width: 768px)')
+  const isTablet = useMediaQuery('(min-width: 768px)');
 
   useScrollLock();
-  useOnClickOutside(modalRef, closeModal);
+  useOnClickOutside(modalRef, () => handleClose());
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
+
+  const handleClose = () => {
+    setIsVisible(false);
+    setTimeout(() => {
+      closeModal();
+    }, 300);
+  };
 
   return (
     <div className="fixed inset-0 bg-black/50">
@@ -41,9 +48,7 @@ export function Modal({ closeModal, totalOrder, dessertCart }: Props) {
             <p className="text-body-base text-rose-500">We hope you enjoy your food!</p>
           </div>
           <div className="rounded-lg bg-rose-50 p-6">
-
             <div className="max-h-[210px] overflow-y-auto">
-
               {dessertCart.map((dessert, index) => (
                 <Fragment key={dessert.id}>
                   {index > 0 && <Separator className="my-4" />}
@@ -58,28 +63,24 @@ export function Modal({ closeModal, totalOrder, dessertCart }: Props) {
                         </div>
                       </div>
                     </div>
-
                     <p className="preset-3 text-rose-900">${(dessert.quantity * dessert.price).toFixed(2)}</p>
                   </div>
                 </Fragment>
               ))}
             </div>
-
             <Separator className="my-6" />
-
             <div className="flex items-center justify-between text-rose-900">
               <p className="preset-4">Order Total</p>
               <p className="preset-2">${totalOrder.toFixed(2)}</p>
             </div>
           </div>
 
-          <button
-            className="primary-btn"
-            onClick={closeModal}>
+          <button className="primary-btn"
+                  onClick={handleClose}>
             Start New Order
           </button>
         </div>
       </FocusLock>
     </div>
-  )
+  );
 }
