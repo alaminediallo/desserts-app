@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { DessertType } from "../type/dessertType.ts";
 import { dessertsData } from "../constant/data.ts";
 import { createSelectors } from "./selectors.ts";
+import { persist } from "zustand/middleware";
 
 type DessertState = {
   desserts: DessertType[];
@@ -38,20 +39,25 @@ function resetDesserts(desserts: DessertType[]): DessertType[] {
 }
 
 
-const useDessertsStoreBase = create<DessertState>()((set) => ({
-  desserts: dessertsData,
+const useDessertsStoreBase = create<DessertState>()(
+  persist(
+    (set) => ({
+      desserts: dessertsData,
 
-  increment: (id: number) =>
-    set((state) => ({ desserts: incrementDessert(state.desserts, id) })),
+      increment: (id: number) =>
+        set((state) => ({ desserts: incrementDessert(state.desserts, id) })),
 
-  decrement: (id: number) =>
-    set((state) => ({ desserts: decrementDessert(state.desserts, id) })),
+      decrement: (id: number) =>
+        set((state) => ({ desserts: decrementDessert(state.desserts, id) })),
 
-  remove: (id: number) =>
-    set((state) => ({ desserts: removeDessert(state.desserts, id) })),
+      remove: (id: number) =>
+        set((state) => ({ desserts: removeDessert(state.desserts, id) })),
 
-  resetCart: () =>
-    set((state) => ({ desserts: resetDesserts(state.desserts) })),
-}));
+      resetCart: () =>
+        set((state) => ({ desserts: resetDesserts(state.desserts) })),
+    }),
+    { name: 'cart-storage' }
+  )
+);
 
 export const useDessertsStore = createSelectors(useDessertsStoreBase);
