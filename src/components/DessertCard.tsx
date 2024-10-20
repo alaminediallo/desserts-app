@@ -1,3 +1,4 @@
+import { clsx } from 'clsx';
 import { QuantitySelector } from "./QuantitySelector.tsx";
 import { DessertType } from "../type/dessertType.ts";
 import { useDessertsStore } from "../store/useDessertsStore.ts";
@@ -13,7 +14,9 @@ export function DessertCard({ id, name, image, category, price, quantity }: Dess
           <source media="(min-width: 1024px)" srcSet={image.desktop} />
           <source media="(min-width: 768px)" srcSet={image.tablet} />
           <img src={image.mobile} alt={name}
-               className={`w-full rounded-lg object-cover ${quantity > 0 ? 'ring-2 ring-red' : ''}`} />
+               className={clsx('w-full rounded-lg object-cover', {
+                 'ring-2 ring-red': quantity > 0
+               })} />
         </picture>
 
         {quantity === 0 ? (
