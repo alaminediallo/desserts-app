@@ -1,6 +1,6 @@
-import { dessertType } from "../type/dessertType.ts";
+import { DessertType } from "../type/dessertType.ts";
 
-export const dessertsData: dessertType[] = [
+export const dessertsData: DessertType[] = [
   {
     "id": 1,
     "image": {

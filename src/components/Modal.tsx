@@ -2,11 +2,11 @@ import { Fragment, useEffect, useRef, useState } from "react";
 import { Separator } from "./Separator.tsx";
 import { useMediaQuery, useOnClickOutside, useScrollLock } from 'usehooks-ts';
 import FocusLock from 'react-focus-lock';
-import { dessertType } from "../type/dessertType.ts";
+import { DessertType } from "../type/dessertType.ts";
 
 type Props = {
   closeModal: () => void;
-  dessertCart: dessertType[];
+  dessertCart: DessertType[];
   totalOrder: number;
 };
 

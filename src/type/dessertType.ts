@@ -1,4 +1,4 @@
-export type dessertType = {
+export type DessertType = {
   id: number;
   image: {
     thumbnail: string;

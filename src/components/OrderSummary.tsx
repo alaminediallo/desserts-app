@@ -1,20 +1,17 @@
 import { useState } from "react";
-import { Modal } from "./Modal.tsx";
 import { createPortal } from "react-dom";
-import { dessertType } from "../type/dessertType.ts";
+import { useDessertsStore } from "../store/useDessertsStore.ts";
+import { DessertType } from "../type/dessertType.ts";
+import { Modal } from "./Modal.tsx";
 
-type Props = {
-  dessertCart: dessertType[];
-  onReset: () => void;
-}
-
-export function OrderSummary({ dessertCart, onReset }: Props) {
+export function OrderSummary({ dessertCart }: { dessertCart: DessertType[] }) {
   const [showModal, setShowModal] = useState(false);
+  const resetCart = useDessertsStore(state => state.resetCart);
 
   const totalOrder = dessertCart.reduce((acc, currentValue) => acc + currentValue.quantity * currentValue.price, 0);
 
   const closeModal = () => {
-    onReset()
+    resetCart()
     setShowModal(false)
   }
 

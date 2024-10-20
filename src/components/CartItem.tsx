@@ -1,10 +1,9 @@
-import { dessertType } from "../type/dessertType.ts";
+import { useDessertsStore } from "../store/useDessertsStore.ts";
+import { DessertType } from "../type/dessertType.ts";
 
-type Props = {
-  onRemove: (id: number) => void;
-} & dessertType;
+export function CartItem({ id, name, price, quantity, }: DessertType) {
+  const remove = useDessertsStore(state => state.remove)
 
-export function CartItem({ id, name, price, quantity, onRemove }: Props) {
   return (
     <div className="flex items-center justify-between">
       <div className="flex flex-col gap-2">
@@ -17,7 +16,7 @@ export function CartItem({ id, name, price, quantity, onRemove }: Props) {
       </div>
 
       <button
-        onClick={() => onRemove(id)}
+        onClick={() => remove(id)}
         className="group flex size-[18px] items-center justify-center rounded-full border border-rose-400 outline-0 transition-colors hover:border-rose-900 focus-visible:border-rose-900">
         <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" viewBox="0 0 10 10">
           <path fill="#ADA885"

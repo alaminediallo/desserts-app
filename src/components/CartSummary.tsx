@@ -1,15 +1,10 @@
-import { dessertType } from "../type/dessertType.ts";
 import { OrderSummary } from "./OrderSummary.tsx";
 import { Separator } from "./Separator.tsx";
 import { CartItem } from "./CartItem.tsx";
+import { useDessertsStore } from "../store/useDessertsStore.ts";
 
-type Props = {
-  desserts: dessertType[];
-  onRemove: (id: number) => void;
-  onReset: () => void;
-}
-
-export function CartSummary({ desserts, onRemove, onReset }: Props) {
+export function CartSummary() {
+  const desserts = useDessertsStore.use.desserts();
 
   const dessertCart = desserts.filter(dessert => dessert.quantity > 0);
   const dessertCartQuantity = dessertCart.reduce((acc, currentValue) => acc + currentValue.quantity, 0);
@@ -27,11 +22,11 @@ export function CartSummary({ desserts, onRemove, onReset }: Props) {
           {dessertCart.map((dessert, index) => (
             <div key={dessert.id}>
               {index > 0 && <Separator className="my-4" />}
-              <CartItem {...dessert} onRemove={onRemove} />
+              <CartItem {...dessert} />
             </div>
           ))}
           <Separator className="my-6" />
-          <OrderSummary dessertCart={dessertCart} onReset={onReset} />
+          <OrderSummary dessertCart={dessertCart} />
         </>
       )}
     </>
