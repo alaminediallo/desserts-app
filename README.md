@@ -11,12 +11,8 @@ This is a solution to the [Product list with cart challenge on Frontend Mentor](
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
-
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
 
@@ -33,20 +29,12 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+![](design/Screenshot.png)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL : [Live Site]()
+- Solution URL : [Code Solution](https://github.com/LamineGitHub/desserts-app)
 
 ## My process
 
@@ -57,59 +45,68 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+- [React](https://react.dev/) - JS library
+- [Tailwindcss](https://tailwindcss.com/) - For styles
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+During the development of the **Desserts app**, I had the opportunity to dive deeper into state management and UI handling, particularly in the following areas:
 
-To see how you can add code snippets, see below:
+1. Modal Management with External Hooks
+  I integrated an external library for handling modals, which allowed for a cleaner and more efficient approach. Using custom hooks from this library, I was able to manage the opening and closing of modals in a more declarative and reusable way. This approach significantly improved the maintainability of the codebase, especially for handling the order confirmation process.
+  
+  ```ts
+// src/components/modal.tsx  
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
+export function Modal({ closeModal, totalOrder, dessertCart }: Props) {
+  const [isVisible, setIsVisible] = useState(false);
+  const modalRef = useRef<HTMLDivElement>(null);
+  
+  useScrollLock();
+  useOnClickOutside(modalRef, () => handleClose());
+
+//...
 }
-```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
-```
+  ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+2. State Management with Zustand: 
+   Zustand proved to be an excellent choice for managing the state of the shopping cart. Its simplicity allowed me to handle cart operations, like adding or removing items, with minimal boilerplate. 
+   Zustand’s store-based architecture also made it easy to share state across components without the complexity of larger state management solutions.
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+  ```ts
+// src/store/useDessertsStroe.ts
 
-### Continued development
+const useDessertsStoreBase = create<DessertState>()(
+  persist(
+    (set) => ({
+      desserts: dessertsData,
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+      increment: (id: number) =>
+        set((state) => ({ desserts: incrementDessert(state.desserts, id) })),
 
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+      decrement: (id: number) =>
+        set((state) => ({ desserts: decrementDessert(state.desserts, id) })),
 
+      remove: (id: number) =>
+        set((state) => ({ desserts: removeDessert(state.desserts, id) })),
+
+      resetCart: () =>
+        set((state) => ({ desserts: resetDesserts(state.desserts) })),
+    }),
+    { name: 'cart-storage' }
+  )
+);
+  ```
+
+These learnings not only improved my understanding of handling complex UI flows but also reinforced the importance of choosing the right tools for specific use cases.
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [usehooks-ts Documentation](https://usehooks-ts.com) - This library provided me with a collection of reusable hooks, which simplified my code and made managing state and UI interactions much easier. I specifically used it for managing modal states efficiently and will definitely rely on it in future projects.
 
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+- [Zustand Documentation](https://docs.pmnd.rs/zustand/getting-started/introduction) - Zustand was a lightweight yet powerful state management tool for this project. It allowed me to manage the cart's state with minimal boilerplate and a clean API. I highly recommend it for anyone looking for a simple but effective state management solution.
+
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+- LinkedIn - [Lamine Diallo](https://www.linkedin.com/in/mamadou-lamine-diallo-1a8596241)
+- Frontend Mentor - [@lamine](https://www.frontendmentor.io/profile/LamineGitHub)
