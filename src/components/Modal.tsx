@@ -46,14 +46,15 @@ export function Modal({ closeModal, totalOrder, dessertCart }: Props) {
           )}
           role="dialog"
           aria-modal="true"
-          aria-labelledby="Order Confirmed"
+          aria-labelledby="order-title"
+          aria-describedby="order-desc"
         >
           <div>
             <img src="/assets/images/icon-order-confirmed.svg" alt="" />
-            <h2 className="preset-1 mb-2 mt-6 text-rose-900">
+            <h2 id="order-title" className="preset-1 mb-2 mt-6 text-rose-900">
               Order Confirmed
             </h2>
-            <p className="text-body-base text-rose-500">We hope you enjoy your food!</p>
+            <p id="order-desc" className="text-body-base text-rose-500">We hope you enjoy your food!</p>
           </div>
           <div className="rounded-lg bg-rose-50 p-6">
             <div className="max-h-[210px] overflow-y-auto">
