@@ -20,7 +20,10 @@ export function Modal({ closeModal, totalOrder, dessertCart }: Props) {
   useOnClickOutside(modalRef, () => handleClose());
 
   useEffect(() => {
-    setIsVisible(true);
+    const timeoutId = setTimeout(() => {
+      setIsVisible(true);
+    }, 100);
+    return () => clearTimeout(timeoutId);
   }, []);
 
   const handleClose = () => {
@@ -35,7 +38,10 @@ export function Modal({ closeModal, totalOrder, dessertCart }: Props) {
       <FocusLock>
         <div
           ref={modalRef}
-          className={`fixed left-1/2 z-20 flex max-h-dvh w-full max-w-lg -translate-x-1/2 flex-col gap-8 rounded-t-xl bg-white px-6 py-10 transition-transform duration-300 ease-out tablet:rounded-b-xl tablet:px-10 ${isTablet ? 'top-1/2 -translate-y-1/2' : 'bottom-0'} ${isVisible ? 'translate-y-0 tablet:top-1/2 tablet:-translate-y-1/2' : 'translate-y-full'}`}
+          className={`fixed left-1/2 z-20 flex max-h-dvh w-full max-w-lg -translate-x-1/2 flex-col gap-8 rounded-t-xl 
+          bg-white px-6 py-10 transition-transform duration-300 ease-out tablet:rounded-b-xl tablet:px-10 
+          ${isTablet ? 'top-1/2 -translate-y-1/2' : 'bottom-0'} 
+          ${isVisible ? 'translate-y-0 tablet:top-1/2 tablet:-translate-y-1/2' : 'translate-y-full'}`}
           role="dialog"
           aria-modal="true"
           aria-labelledby="Order Confirmed"
