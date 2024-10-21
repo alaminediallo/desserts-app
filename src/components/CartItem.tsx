@@ -1,7 +1,7 @@
 import { useDessertsStore } from "../store/useDessertsStore.ts";
 import { DessertType } from "../type/dessertType.ts";
 
-export function CartItem({ id, name, price, quantity, }: DessertType) {
+export function CartItem({ id, name, price, quantity }: DessertType) {
   const remove = useDessertsStore(state => state.remove)
 
   return (
