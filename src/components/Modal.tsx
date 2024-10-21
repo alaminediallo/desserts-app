@@ -4,6 +4,7 @@ import { useMediaQuery, useOnClickOutside, useScrollLock } from 'usehooks-ts';
 import FocusLock from 'react-focus-lock';
 import { Separator } from "./Separator.tsx";
 import { DessertType } from "../type/dessertType.ts";
+import { Button } from "./Button.tsx";
 
 type Props = {
   closeModal: () => void;
@@ -77,6 +78,7 @@ export function Modal({ closeModal, totalOrder, dessertCart }: Props) {
                 </Fragment>
               ))}
             </div>
+
             <Separator className="my-6" />
             <div className="flex items-center justify-between text-rose-900">
               <p className="preset-4">Order Total</p>
@@ -84,10 +86,9 @@ export function Modal({ closeModal, totalOrder, dessertCart }: Props) {
             </div>
           </div>
 
-          <button className="primary-btn"
-                  onClick={handleClose}>
+          <Button onClick={handleClose}>
             Start New Order
-          </button>
+          </Button>
         </div>
       </FocusLock>
     </div>

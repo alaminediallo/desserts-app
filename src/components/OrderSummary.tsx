@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { useDessertsStore } from "../store/useDessertsStore.ts";
 import { DessertType } from "../type/dessertType.ts";
 import { Modal } from "./Modal.tsx";
+import { Button } from "./Button.tsx";
 
 export function OrderSummary({ dessertCart }: { dessertCart: DessertType[] }) {
   const [showModal, setShowModal] = useState(false);
@@ -27,12 +28,9 @@ export function OrderSummary({ dessertCart }: { dessertCart: DessertType[] }) {
         <p className="preset-4">This is a <span className="font-semibold">carbon-neutral</span> delivery</p>
       </div>
 
-      <button
-        className="primary-btn"
-        onClick={() => setShowModal(true)}
-      >
+      <Button onClick={() => setShowModal(true)}>
         Confirm Order
-      </button>
+      </Button>
       {showModal &&
         createPortal(
           <Modal
