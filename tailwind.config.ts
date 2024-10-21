@@ -20,7 +20,7 @@ export default {
         },
       },
       fontFamily: {
-        'red-hat': ['Red Hat Text', 'sans-serif'],
+        'red-hat': ['Red Hat Text'],
       },
       fontSize: {
         'heading-xl': ['2.5rem', { lineHeight: '120%' }],

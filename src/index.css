@@ -11,34 +11,37 @@
     }
 
     * {
-        @apply font-red-hat;
+        font-family: theme('fontFamily.red-hat'), sans-serif;
     }
 
     body {
-        @apply bg-rose-50;
+        background-color: theme('backgroundColor.rose.50');
     }
 }
 
-.preset-1 {
-    @apply text-heading-xl font-bold;
-}
+@layer utilities {
+    .preset-1 {
+        font-size: theme('fontSize.heading-xl');
+        font-weight: theme('fontWeight.bold');
+    }
 
-.preset-2 {
-    @apply text-heading-lg font-bold;
-}
+    .preset-2 {
+        font-size: theme('fontSize.heading-lg');
+        font-weight: theme('fontWeight.bold');
+    }
 
-.preset-3 {
-    @apply text-body-base font-semibold;
-}
+    .preset-3 {
+        font-size: theme('fontSize.body-base');
+        font-weight: theme('fontWeight.semibold');
+    }
 
-.preset-4 {
-    @apply text-body-sm font-normal;
-}
+    .preset-4 {
+        font-size: theme('fontSize.body-sm');
+        font-weight: theme('fontWeight.normal');
+    }
 
-.preset-4-bold {
-    @apply text-body-sm font-semibold;
-}
-
-.primary-btn {
-    @apply preset-3 w-full rounded-full bg-red py-4 text-center text-white transition-colors hover:bg-[#952c0b] outline-0 focus-visible:ring-2 focus-visible:ring-red focus-visible:bg-[#952c0b] focus-visible:ring-offset-2;
+    .preset-4-bold {
+        font-size: theme('fontSize.body-sm');
+        font-weight: theme('fontWeight.semibold');
+    }
 }
