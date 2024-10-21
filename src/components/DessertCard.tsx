@@ -1,9 +1,10 @@
+import { memo } from 'react';
 import { clsx } from 'clsx';
 import { QuantitySelector } from "./QuantitySelector.tsx";
 import { DessertType } from "../type/dessertType.ts";
 import { useDessertsStore } from "../store/useDessertsStore.ts";
 
-export function DessertCard({ id, name, image, category, price, quantity }: DessertType) {
+export const DessertCard = memo(({ id, name, image, category, price, quantity }: DessertType) => {
   const increment = useDessertsStore.use.increment();
   const decrement = useDessertsStore.use.decrement();
 
@@ -13,23 +14,26 @@ export function DessertCard({ id, name, image, category, price, quantity }: Dess
         <picture>
           <source media="(min-width: 1024px)" srcSet={image.desktop} />
           <source media="(min-width: 768px)" srcSet={image.tablet} />
-          <img src={image.mobile} alt={name}
-               className={clsx('w-full rounded-lg object-cover', {
-                 'ring-2 ring-red': quantity > 0
-               })} />
+          <img
+            src={image.mobile}
+            alt={name}
+            className={clsx('w-full rounded-lg object-cover', {
+              'ring-2 ring-red': quantity > 0
+            })}
+          />
         </picture>
 
         {quantity === 0 ? (
           <button
             onClick={() => increment(id)}
-            className="group -m-[22px] flex w-40 items-center justify-center gap-2 rounded-full border border-rose-400 bg-white p-3 outline-none transition-colors hover:border-red focus-visible:ring-1 focus-visible:ring-red">
-            <img src="/assets/images/icon-add-to-cart.svg" alt="" className="size-5" />
+            className="group m-[-22px] flex w-40 items-center justify-center gap-2 rounded-full border border-rose-400 bg-white p-3 outline-none transition-colors hover:border-red focus-visible:ring-1 focus-visible:ring-red">
+            <img src="/assets/images/icon-add-to-cart.svg" alt="Add to cart icon" className="size-5" />
             <span
               className="preset-4-bold inline-block text-rose-900 group-hover:text-red group-focus-visible:text-red">Add to Cart</span>
           </button>
         ) : (
           <div
-            className="-m-[22px] flex w-40 items-center justify-between gap-2 rounded-full border border-red bg-red p-3">
+            className="m-[-22px] flex w-40 items-center justify-between gap-2 rounded-full border border-red bg-red p-3">
             <QuantitySelector onClick={() => decrement(id)}>
               <svg xmlns="http://www.w3.org/2000/svg" width="10" height="2" fill="none" viewBox="0 0 10 2">
                 <path fill="#fff" className="group-hover:fill-red group-focus-visible:fill-red"
@@ -55,5 +59,6 @@ export function DessertCard({ id, name, image, category, price, quantity }: Dess
         <p className="preset-3 text-red">${price.toFixed(2)}</p>
       </div>
     </div>
-  )
-}
+  );
+});
+
