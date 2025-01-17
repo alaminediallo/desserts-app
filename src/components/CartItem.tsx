@@ -1,3 +1,4 @@
+import { motion } from 'motion/react';
 import { useDessertsStore } from "../store/useDessertsStore.ts";
 import { DessertType } from "../type/dessertType.ts";
 
@@ -5,7 +6,14 @@ export function CartItem({ id, name, price, quantity }: DessertType) {
   const remove = useDessertsStore(state => state.remove)
 
   return (
-    <div className="flex items-center justify-between">
+    <motion.div 
+      layout
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -20 }}
+      transition={{ duration: 0.2 }}
+      className="flex items-center justify-between"
+    >
       <div className="flex flex-col gap-2">
         <div className="preset-4-bold text-rose-900">{name}</div>
         <div className="flex gap-2">
@@ -15,7 +23,9 @@ export function CartItem({ id, name, price, quantity }: DessertType) {
         </div>
       </div>
 
-      <button
+      <motion.button
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
         onClick={() => remove(id)}
         className="group flex size-[18px] items-center justify-center rounded-full border border-rose-400 outline-0 transition-colors hover:border-rose-900 focus-visible:border-rose-900">
         <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" viewBox="0 0 10 10">
@@ -23,7 +33,7 @@ export function CartItem({ id, name, price, quantity }: DessertType) {
                 className="size-[9px] text-rose-400 group-hover:fill-rose-900 group-focus-visible:fill-rose-900"
                 d="M8.375 9.375 5 6 1.625 9.375l-1-1L4 5 .625 1.625l1-1L5 4 8.375.625l1 1L6 5l3.375 3.375-1 1Z" />
         </svg>
-      </button>
-    </div>
+      </motion.button>
+    </motion.div>
   )
 }
