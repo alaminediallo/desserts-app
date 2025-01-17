@@ -11,37 +11,56 @@
     }
 
     * {
-        font-family: theme('fontFamily.red-hat'), sans-serif;
+        font-family: theme("fontFamily.red-hat"), sans-serif;
     }
 
     body {
-        background-color: theme('backgroundColor.rose.50');
+        background-color: theme("backgroundColor.rose.50");
+    }
+
+    ::-webkit-scrollbar {
+        width: 7px;
+    }
+
+    ::-webkit-scrollbar-track {
+        border-radius: 5px;
+        box-shadow: inset 0 0 7px rgba(0, 0, 0, 0.2);
+        background-color: theme("colors.rose.50");
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background-color: theme("colors.rose.500");
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: theme("colors.rose.300");
     }
 }
 
 @layer utilities {
     .preset-1 {
-        font-size: theme('fontSize.heading-xl');
-        font-weight: theme('fontWeight.bold');
+        font-size: theme("fontSize.heading-xl");
+        font-weight: theme("fontWeight.bold");
     }
 
     .preset-2 {
-        font-size: theme('fontSize.heading-lg');
-        font-weight: theme('fontWeight.bold');
+        font-size: theme("fontSize.heading-lg");
+        font-weight: theme("fontWeight.bold");
     }
 
     .preset-3 {
-        font-size: theme('fontSize.body-base');
-        font-weight: theme('fontWeight.semibold');
+        font-size: theme("fontSize.body-base");
+        font-weight: theme("fontWeight.semibold");
     }
 
     .preset-4 {
-        font-size: theme('fontSize.body-sm');
-        font-weight: theme('fontWeight.normal');
+        font-size: theme("fontSize.body-sm");
+        font-weight: theme("fontWeight.normal");
     }
 
     .preset-4-bold {
-        font-size: theme('fontSize.body-sm');
-        font-weight: theme('fontWeight.semibold');
+        font-size: theme("fontSize.body-sm");
+        font-weight: theme("fontWeight.semibold");
     }
 }
