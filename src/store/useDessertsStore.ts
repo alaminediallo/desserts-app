@@ -1,43 +1,42 @@
-import { create } from 'zustand';
-import { DessertType } from "../type/dessertType.ts";
-import { dessertsData } from "../constant/data.ts";
-import { createSelectors } from "./selectors.ts";
-import { persist } from "zustand/middleware";
+import { dessertsData } from "@/constant/data.ts"
+import { createSelectors } from "@/store/selectors.ts"
+import { DessertType } from "@/type/dessertType.ts"
+import { create } from "zustand"
+import { persist } from "zustand/middleware"
 
 type DessertState = {
-  desserts: DessertType[];
-  increment: (id: number) => void;
-  decrement: (id: number) => void;
-  remove: (id: number) => void;
-  resetCart: () => void;
-};
+  desserts: DessertType[]
+  increment: (id: number) => void
+  decrement: (id: number) => void
+  remove: (id: number) => void
+  resetCart: () => void
+}
 
 function incrementDessert(desserts: DessertType[], id: number): DessertType[] {
   return desserts.map((dessert) =>
     dessert.id === id && dessert.quantity < 9
       ? { ...dessert, quantity: dessert.quantity + 1 }
-      : dessert
-  );
+      : dessert,
+  )
 }
 
 function decrementDessert(desserts: DessertType[], id: number): DessertType[] {
   return desserts.map((dessert) =>
     dessert.id === id && dessert.quantity > 0
       ? { ...dessert, quantity: dessert.quantity - 1 }
-      : dessert
-  );
+      : dessert,
+  )
 }
 
 function removeDessert(desserts: DessertType[], id: number): DessertType[] {
   return desserts.map((dessert) =>
-    dessert.id === id ? { ...dessert, quantity: 0 } : dessert
-  );
+    dessert.id === id ? { ...dessert, quantity: 0 } : dessert,
+  )
 }
 
 function resetDesserts(desserts: DessertType[]): DessertType[] {
-  return desserts.map((dessert) => ({ ...dessert, quantity: 0 }));
+  return desserts.map((dessert) => ({ ...dessert, quantity: 0 }))
 }
-
 
 const useDessertsStoreBase = create<DessertState>()(
   persist(
@@ -56,8 +55,8 @@ const useDessertsStoreBase = create<DessertState>()(
       resetCart: () =>
         set((state) => ({ desserts: resetDesserts(state.desserts) })),
     }),
-    { name: 'cart-storage' }
-  )
-);
+    { name: "cart-storage" },
+  ),
+)
 
-export const useDessertsStore = createSelectors(useDessertsStoreBase);
+export const useDessertsStore = createSelectors(useDessertsStoreBase)

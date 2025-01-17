@@ -1,13 +1,13 @@
-import { motion } from "motion/react";
-import { DessertCard } from "./DessertCard.tsx";
-import { useDessertsStore } from "../store/useDessertsStore.ts";
-import { containerVariants } from "../variants/index.ts";
+import { DessertCard } from "@/components/DessertCard.tsx"
+import { useDessertsStore } from "@/store/useDessertsStore.ts"
+import { containerVariants } from "@/variants"
+import { motion } from "motion/react"
 
 export function DessertList() {
-  const desserts = useDessertsStore(state => state.desserts);
+  const desserts = useDessertsStore((state) => state.desserts)
 
   return (
-    <motion.div 
+    <motion.div
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -17,5 +17,5 @@ export function DessertList() {
         <DessertCard key={dessert.id} {...dessert} />
       ))}
     </motion.div>
-  );
+  )
 }

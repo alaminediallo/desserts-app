@@ -1,39 +1,39 @@
-import { Fragment, useEffect, useRef, useState } from "react";
-import { clsx } from "clsx";
-import { useMediaQuery, useOnClickOutside, useScrollLock } from 'usehooks-ts';
-import FocusLock from 'react-focus-lock';
-import { Separator } from "./Separator.tsx";
-import { DessertType } from "../type/dessertType.ts";
-import { Button } from "./Button.tsx";
+import { Button } from "@/components/Button.tsx"
+import { Separator } from "@/components/Separator.tsx"
+import { DessertType } from "@/type/dessertType.ts"
+import { clsx } from "clsx"
+import { Fragment, useEffect, useRef, useState } from "react"
+import FocusLock from "react-focus-lock"
+import { useMediaQuery, useOnClickOutside, useScrollLock } from "usehooks-ts"
 
 type Props = {
-  closeModal: () => void;
-  dessertCart: DessertType[];
-  totalOrder: number;
-};
+  closeModal: () => void
+  dessertCart: DessertType[]
+  totalOrder: number
+}
 
 export function Modal({ closeModal, totalOrder, dessertCart }: Props) {
-  const [isVisible, setIsVisible] = useState(false);
-  const modalRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false)
+  const modalRef = useRef<HTMLDivElement>(null)
 
-  const isTablet = useMediaQuery('(min-width: 768px)');
+  const isTablet = useMediaQuery("(min-width: 768px)")
 
-  useScrollLock();
-  useOnClickOutside(modalRef, () => handleClose());
+  useScrollLock()
+  useOnClickOutside(modalRef, () => handleClose())
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      setIsVisible(true);
-    }, 100);
-    return () => clearTimeout(timeoutId);
-  }, []);
+      setIsVisible(true)
+    }, 100)
+    return () => clearTimeout(timeoutId)
+  }, [])
 
   const handleClose = () => {
-    setIsVisible(false);
+    setIsVisible(false)
     setTimeout(() => {
-      closeModal();
-    }, 300);
-  };
+      closeModal()
+    }, 300)
+  }
 
   return (
     <div className="fixed inset-0 bg-black/50">
@@ -41,9 +41,11 @@ export function Modal({ closeModal, totalOrder, dessertCart }: Props) {
         <div
           ref={modalRef}
           className={clsx(
-            'fixed left-1/2 z-20 flex max-h-dvh w-full max-w-lg -translate-x-1/2 flex-col gap-8 rounded-t-xl bg-white px-6 py-10 transition-transform duration-300 ease-out tablet:rounded-b-xl tablet:px-10',
-            isVisible ? 'translate-y-0 tablet:top-1/2 tablet:-translate-y-1/2' : 'translate-y-full',
-            isTablet ? 'top-1/2 -translate-y-1/2' : 'bottom-0',
+            "fixed left-1/2 z-20 flex max-h-dvh w-full max-w-lg -translate-x-1/2 flex-col gap-8 rounded-t-xl bg-white px-6 py-10 transition-transform duration-300 ease-out tablet:rounded-b-xl tablet:px-10",
+            isVisible
+              ? "translate-y-0 tablet:top-1/2 tablet:-translate-y-1/2"
+              : "translate-y-full",
+            isTablet ? "top-1/2 -translate-y-1/2" : "bottom-0",
           )}
           role="dialog"
           aria-modal="true"
@@ -55,7 +57,9 @@ export function Modal({ closeModal, totalOrder, dessertCart }: Props) {
             <h2 id="order-title" className="preset-1 mb-2 mt-6 text-rose-900">
               Order Confirmed
             </h2>
-            <p id="order-desc" className="text-body-base text-rose-500">We hope you enjoy your food!</p>
+            <p id="order-desc" className="text-body-base text-rose-500">
+              We hope you enjoy your food!
+            </p>
           </div>
           <div className="rounded-lg bg-rose-50 p-6">
             <div className="max-h-[210px] overflow-y-auto">
@@ -64,16 +68,28 @@ export function Modal({ closeModal, totalOrder, dessertCart }: Props) {
                   {index > 0 && <Separator className="my-4" />}
                   <div className="flex items-center justify-between gap-2">
                     <div className="flex gap-4">
-                      <img src={dessert.image.thumbnail} alt={dessert.name} className="size-12" />
+                      <img
+                        src={dessert.image.thumbnail}
+                        alt={dessert.name}
+                        className="size-12"
+                      />
                       <div className="flex flex-col gap-2">
-                        <h2 className="preset-4-bold line-clamp-1">{dessert.name}</h2>
+                        <h2 className="preset-4-bold line-clamp-1">
+                          {dessert.name}
+                        </h2>
                         <div className="flex gap-2">
-                          <p className="preset-4-bold w-[21px] text-red">{dessert.quantity}x</p>
-                          <p className="preset-4 text-rose-500">@ ${dessert.price.toFixed(2)}</p>
+                          <p className="preset-4-bold w-[21px] text-red">
+                            {dessert.quantity}x
+                          </p>
+                          <p className="preset-4 text-rose-500">
+                            @ ${dessert.price.toFixed(2)}
+                          </p>
                         </div>
                       </div>
                     </div>
-                    <p className="preset-3 text-rose-900">${(dessert.quantity * dessert.price).toFixed(2)}</p>
+                    <p className="preset-3 text-rose-900">
+                      ${(dessert.quantity * dessert.price).toFixed(2)}
+                    </p>
                   </div>
                 </Fragment>
               ))}
@@ -86,11 +102,9 @@ export function Modal({ closeModal, totalOrder, dessertCart }: Props) {
             </div>
           </div>
 
-          <Button onClick={handleClose}>
-            Start New Order
-          </Button>
+          <Button onClick={handleClose}>Start New Order</Button>
         </div>
       </FocusLock>
     </div>
-  );
+  )
 }

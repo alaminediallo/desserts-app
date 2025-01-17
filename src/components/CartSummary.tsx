@@ -1,8 +1,8 @@
+import { CartItem } from "@/components/CartItem.tsx"
+import { OrderSummary } from "@/components/OrderSummary.tsx"
+import { Separator } from "@/components/Separator.tsx"
+import { useDessertsStore } from "@/store/useDessertsStore.ts"
 import { AnimatePresence } from "motion/react"
-import { OrderSummary } from "./OrderSummary.tsx"
-import { Separator } from "./Separator.tsx"
-import { CartItem } from "./CartItem.tsx"
-import { useDessertsStore } from "../store/useDessertsStore.ts"
 
 export function CartSummary() {
   const desserts = useDessertsStore.use.desserts()
@@ -10,7 +10,7 @@ export function CartSummary() {
   const dessertCart = desserts.filter((dessert) => dessert.quantity > 0)
   const dessertCartQuantity = dessertCart.reduce(
     (acc, currentValue) => acc + currentValue.quantity,
-    0
+    0,
   )
 
   return (
