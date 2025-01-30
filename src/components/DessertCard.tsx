@@ -2,8 +2,9 @@ import { QuantitySelector } from "@/components/QuantitySelector.tsx"
 import { useDessertsStore } from "@/store/useDessertsStore.ts"
 import { DessertType } from "@/type/dessertType.ts"
 import { itemVariants } from "@/variants"
+import NumberFlow from "@number-flow/react"
 import { clsx } from "clsx"
-import { AnimatePresence, motion } from "motion/react"
+import { motion } from "motion/react"
 import { memo } from "react"
 
 export const DessertCard = memo(
@@ -64,18 +65,9 @@ export const DessertCard = memo(
                 </svg>
               </QuantitySelector>
 
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={quantity}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.1 }}
-                  className="preset-4-bold inline-block text-white"
-                >
-                  {quantity}
-                </motion.span>
-              </AnimatePresence>
+                <span className="preset-4-bold inline-block text-white">
+                  <NumberFlow value={quantity} />
+                </span>
 
               <QuantitySelector onClick={() => increment(id)}>
                 <svg

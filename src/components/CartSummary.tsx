@@ -3,6 +3,7 @@ import { OrderSummary } from "@/components/OrderSummary.tsx"
 import { Separator } from "@/components/Separator.tsx"
 import { useDessertsStore } from "@/store/useDessertsStore.ts"
 import { AnimatePresence } from "motion/react"
+import NumberFlow from "@number-flow/react"
 
 export function CartSummary() {
   const desserts = useDessertsStore.use.desserts()
@@ -16,7 +17,7 @@ export function CartSummary() {
   return (
     <>
       <h2 className="preset-2 mb-6 text-red">
-        Your Cart ({dessertCartQuantity})
+        Your Cart (<NumberFlow value={dessertCartQuantity} />)
       </h2>
 
       {dessertCart.length === 0 ? (

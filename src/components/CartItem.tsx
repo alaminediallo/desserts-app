@@ -1,4 +1,5 @@
 import { motion } from "motion/react"
+import NumberFlow from "@number-flow/react"
 import { useDessertsStore } from "../store/useDessertsStore.ts"
 import { DessertType } from "../type/dessertType.ts"
 
@@ -16,11 +17,24 @@ export function CartItem({ id, name, price, quantity }: DessertType) {
     >
       <div className="flex flex-col gap-2">
         <div className="preset-4-bold text-rose-900">{name}</div>
+
         <div className="flex gap-2">
-          <p className="preset-4-bold w-[21px] text-red">{quantity}x</p>
-          <p className="preset-4 text-rose-500">@ ${price.toFixed(2)}</p>
+          <p className="preset-4-bold w-[21px] text-red">
+            <NumberFlow value={quantity} />x
+          </p>
+
+          <p className="preset-4 text-rose-500">@
+            <NumberFlow
+              locales="en-US"
+              format={{ style: "currency", currency: "USD" }}
+              value={price} />
+          </p>
+
           <p className="preset-4-bold text-rose-500">
-            ${(price * quantity).toFixed(2)}
+            <NumberFlow
+              locales="en-US"
+              format={{ style: "currency", currency: "USD" }}
+              value={price * quantity} />
           </p>
         </div>
       </div>

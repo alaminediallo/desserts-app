@@ -2,6 +2,7 @@ import { Button } from "@/components/Button.tsx"
 import { Modal } from "@/components/Modal.tsx"
 import { useDessertsStore } from "@/store/useDessertsStore.ts"
 import { DessertType } from "@/type/dessertType.ts"
+import NumberFlow from "@number-flow/react"
 import { useState } from "react"
 import { createPortal } from "react-dom"
 
@@ -23,7 +24,12 @@ export function OrderSummary({ dessertCart }: { dessertCart: DessertType[] }) {
     <div className="flex flex-col gap-6">
       <div className="flex items-center justify-between text-rose-900">
         <p className="preset-4">Order Total</p>
-        <p className="preset-2">${totalOrder.toFixed(2)}</p>
+        <p className="preset-2">
+          <NumberFlow
+            locales="en-US"
+            format={{ style: "currency", currency: "USD" }}
+            value={totalOrder} />
+        </p>
       </div>
 
       <div className="flex items-center justify-center gap-2 bg-rose-50 p-4">
