@@ -34,7 +34,7 @@ Users should be able to:
 ### Links
 
 - Live Site URL : [Live Site](https://desserts-app-six.vercel.app/)
-- Solution URL : [Code Solution](https://github.com/LamineGitHub/desserts-app)
+- Solution URL : [Code Solution](https://github.com/alaminediallo/desserts-app)
 
 ## My process
 
@@ -109,4 +109,4 @@ These learnings not only improved my understanding of handling complex UI flows 
 ## Author
 
 - LinkedIn - [Lamine Diallo](https://www.linkedin.com/in/mamadou-lamine-diallo-1a8596241)
-- Frontend Mentor - [@lamine](https://www.frontendmentor.io/profile/LamineGitHub)
+- Frontend Mentor - [@lamine](https://www.frontendmentor.io/profile/alaminediallo)
